@@ -7,8 +7,6 @@ import { Home } from '../pages/Home';
 
 export const AppRouter = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(() => !!localStorage.getItem('token'));
-    console.log(isAuthenticated);
-    
 
     return (
         <Router>
