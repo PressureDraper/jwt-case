@@ -1,19 +1,19 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { Login } from '../pages/Login'
-import { useState } from 'react'
 import { ProtectedRoute } from './ProtectedRoute';
 import { AppLayout } from '../layouts/AppLayout';
 import { Home } from '../pages/Home';
+import { useAuthStore } from '../store/auth.store';
 
 export const AppRouter = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(() => !!localStorage.getItem('token'));
+    const { isAuthenticated } = useAuthStore();
 
     return (
         <Router>
             <Routes>
                 <Route path='/login' element={<Login />} />
 
-                <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+                <Route element={<ProtectedRoute />}>
                     <Route path='/' element={<AppLayout />}>
                         <Route index element={<Home />} />
                     </Route>

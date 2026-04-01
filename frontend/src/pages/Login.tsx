@@ -27,6 +27,8 @@ export const Login = () => {
         try {
             await handleLogin(payload.username, payload.password);
         } catch (err) {
+            console.log(err);
+            
             setApiError('Invalid username or password.');
         }
     };
